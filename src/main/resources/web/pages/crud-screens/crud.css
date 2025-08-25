@@ -1,68 +1,123 @@
+/* Importa a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- ESTILOS GERAIS --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif; /* Usa a nova fonte */
+    background-color: #f0f2f5; /* Um cinza mais suave para o fundo */
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+    width: 90%;
+    max-width: 900px; /* Largura máxima para telas grandes */
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* Cantos arredondados no container principal */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra sutil para "elevar" o container */
 }
 
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* --- ESTILOS DA TABELA --- */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Mantém o colapso, mas vamos estilizar as células */
     margin-top: 20px;
+    border-radius: 8px; /* Arredonda os cantos da tabela */
+    overflow: hidden; /* Garante que o conteúdo interno respeite os cantos arredondados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 thead {
-    background-color: #333;
+    background-color: #34495e; /* Um azul-escuro mais sofisticado */
     color: white;
 }
 
 thead th {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
+    font-weight: 600; /* Texto um pouco mais forte no cabeçalho */
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+/* Remove todas as bordas e adiciona apenas uma borda inferior para separar as linhas */
+td, th {
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #ecf0f1; /* Borda inferior sutil */
+}
+
+tbody tr {
+    transition: background-color 0.2s ease-in-out; /* Transição suave para o hover */
+}
+
+tbody tr:last-child td {
+    border-bottom: none; /* Remove a borda da última linha */
 }
 
 tbody tr:hover {
-    background-color: #ddd;
-}
-
-td {
-    padding: 8px;
-    border: 1px solid #ddd;
+    background-color: #f5f7fa; /* Cor de fundo suave ao passar o mouse */
 }
 
 tfoot tr {
     font-weight: bold;
-    border-top: 2px solid #333;
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+tfoot td {
+    padding: 15px;
+}
+
+/* --- ESTILOS DOS BOTÕES --- */
+/* Estilo base para todos os botões */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px; /* Cantos arredondados para os botões */
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out; /* Transição para hover em todas as propriedades */
+}
+
+button:hover {
+    transform: translateY(-2px); /* Efeito de "levantar" ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
 }
 
 .btn-adicionar {
-    background-color: green;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+    background-color: #27ae60; /* Verde mais moderno */
+    display: block; /* Para ocupar a linha toda */
+    width: fit-content; /* Largura se ajusta ao conteúdo */
+    margin-bottom: 20px; /* Espaço entre o botão e a tabela */
+}
+
+.btn-adicionar:hover {
+    background-color: #2ecc71; /* Verde mais claro no hover */
 }
 
 .btn-editar {
-    background-color: blue;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+    background-color: #2980b9; /* Azul mais elegante */
+    margin-right: 5px; /* Pequeno espaço entre os botões de ação */
+}
+
+.btn-editar:hover {
+    background-color: #3498db; /* Azul mais claro no hover */
 }
 
 .btn-excluir {
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+    background-color: #c0392b; /* Vermelho menos "gritante" */
+}
+
+.btn-excluir:hover {
+    background-color: #e74c3c; /* Vermelho mais claro no hover */
 }
