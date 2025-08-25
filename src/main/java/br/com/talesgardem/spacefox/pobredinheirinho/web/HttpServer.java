@@ -9,11 +9,13 @@ import java.util.concurrent.Executors;
 public class HttpServer {
     private static final int THREAD_POOL_SIZE = 10;
     private final int port;
+    private final Router router;
     private ServerSocket serverSocket;
     private volatile boolean running = false;
 
     public HttpServer(int port) {
         this.port = port;
+        this.router = new Router();
     }
 
     public void start() {
@@ -58,7 +60,7 @@ public class HttpServer {
             String method = parts[0];
             String path = parts[1];
 
-            // TODO: handle routing
+            router.handleIncomingRequest(out, method, path);
         } catch (IOException e) {
             System.out.println("Error closing socket:");
             e.printStackTrace();
