@@ -4,37 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Lucros</title>
+    <link rel="stylesheet" href="/src/main/resources/web/pages/crud-screens/crud.css">
 </head>
 <body>
-    <h1>Gestão de Lucros</h1>
-    <button>Adicionar Novo</button>
+    <div class="container">
+        <h1>Gestão de Lucros</h1>
+        <button class="btn-adicionar">Adicionar Novo</button>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Descrição</th>
-                <th>Valor (R$)</th>
-                <th>Data</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Salário</td>
-                <td>R$ 5.000,00</td>
-                <td>05/08/2025</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Total:</td>
-                <td>R$ 5.000,00</td>
-            </tr>
-        </tfoot>
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor (R$)</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Salário</td>
+                    <td>R$ 5.000,00</td>
+                    <td>05/08/2025</td>
+                    <td>
+                        <button class="btn-editar">Editar</button>
+                        <button class="btn-excluir">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td>R$ 5.000,00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </body>
 </html>
