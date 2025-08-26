@@ -1,0 +1,3 @@
+""|GET|"pages/homepage/index.html";
+"index.css"|GET|"pages/homepage/index.css";
+"test"|GET|"pages/test/index.html";
