@@ -1,3 +1,6 @@
 ""|GET|"pages/homepage/index.html";
 "index.css"|GET|"pages/homepage/index.css";
-"test"|GET|"pages/test/index.html";
+"lucros"|GET|"pages/crud-screens/lucro.html";
+"gastosFixos"|GET|"pages/crud-screens/gastofixo.html";
+"gastosVariaveis"|GET|"pages/crud-screens/gastovariavel.html";
+"crud.css"|GET|"pages/crud-screens/crud.css";

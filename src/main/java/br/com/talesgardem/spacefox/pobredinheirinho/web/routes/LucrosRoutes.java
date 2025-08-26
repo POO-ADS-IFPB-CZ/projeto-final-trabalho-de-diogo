@@ -1,4 +1,4 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.web.routes;
 
-public class LucrosRoutes {
+public class LucrosRoutes extends BaseRoutes {
 }

@@ -1,134 +1,145 @@
-/* Define a aparência base da página */
+:root {
+  --text: white;
+  --background: #180c10;
+  --accent-color: #ff498f;
+  --accent-text: black;
+  --secondary-color: #e76b80;
+  --secondary-text: black;
+
+  --table-bg: #491c23;
+  --table-bg2: #6c2a34;
+  --table-bg3: #9c3d4b;
+  --table-txt: white;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {background: #47182c;}
+
 body {
-    font-family: 'Poppins', sans-serif; /* Usa a nova fonte importada */
-    background-color: #f0f2f5; /* Um tom de cinza mais suave para o fundo */
-    color: #333; /* Cor padrão do texto */
-    margin: 0;
-    padding: 20px; /* Adiciona um respiro nas bordas da página */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  width: 100vw;
+  height: 100svh;
 }
 
-/* --- CONTAINER PRINCIPAL --- */
-/* O card que envolve todo o conteúdo */
-.container {
-    width: 90%;
-    max-width: 900px; /* Limita a largura em telas muito grandes para melhor legibilidade */
-    margin: 40px auto; /* Centraliza o container na página */
-    background-color: #ffffff; /* Fundo branco para o conteúdo */
-    padding: 30px; /* Espaçamento interno */
-    border-radius: 12px; /* Cantos arredondados para um visual suave */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra sutil para dar profundidade */
+.pageTitle {
+  text-align: left;
+  letter-spacing: -0.1rem;
+  color: var(--accent-color);
+  font-weight: bolder;
 }
 
-/* Estilo do título principal */
-h1 {
-    text-align: center;
-    color: #2c3e50; /* Cor escura e sóbria para o título */
-    margin-bottom: 30px;
+.content {
+  width: 100%;
+  height: fit-content;
+  border-radius: 0.5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: fit-content 5rem;
 }
 
-/* --- ESTILOS DA TABELA --- */
 table {
-    width: 100%;
-    border-collapse: collapse; /* Remove o espaçamento entre as células */
-    margin-top: 20px;
-    border-radius: 8px; /* Cantos arredondados para a tabela */
-    overflow: hidden; /* Garante que o conteúdo não "vaze" dos cantos arredondados */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra mais leve para a tabela */
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--table-bg);
+  color: var(--table-txt);
+  table-layout: auto;
+  text-wrap: nowrap;
+  height: fit-content;
 }
 
-/* Cabeçalho da tabela */
 thead {
-    background-color: #34495e; /* Um azul-escuro sofisticado */
-    color: white;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text);
 }
 
-/* Células do cabeçalho e do corpo da tabela */
-td, th {
-    padding: 15px;
-    text-align: left;
-    border: none; /* Remove todas as bordas tradicionais */
-    border-bottom: 1px solid #e9ecef; /* Linha sutil para separar as linhas */
+td:has(:nth-child(2)) {
+  display: flex;
+  gap: 0.5rem;
 }
 
-/* Corpo da tabela */
-tbody tr {
-    transition: background-color 0.2s ease-in-out; /* Efeito suave ao passar o mouse */
+td,th {
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  white-space: pre;
+  vertical-align: middle;
 }
 
-/* Contraste aumentado para as linhas pares */
+th {
+  font-weight: bold;
+}
+
+td:nth-of-type(1), th:nth-of-type(1) {
+  text-align: left;
+}
+
 tbody tr:nth-child(even) {
-    background-color: #EAEAEA; /* Cor de fundo mais escura para melhor contraste */
+  background: var(--table-bg2);
 }
 
-/* Remove a borda da última linha para um acabamento limpo */
-tbody tr:last-child td {
-    border-bottom: none;
+.total {
+  font-weight: bold;
+  background-color: var(--table-bg3);
+  color: var(--table-txt);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  height: 5rem;
 }
 
-/* Efeito de hover nas linhas da tabela */
-tbody tr:hover {
-    background-color: #dcdcdc; /* Cor de hover também escurecida para manter a consistência */
+#totalValue {
+  font-weight: bolder;
+  font-size: 1.15rem;
 }
 
-/* Rodapé da tabela */
-tfoot tr {
-    font-weight: bold;
-    background-color: #ecf0f1;
-    color: #34495e;
+.expand {
+  width: 100%;
 }
 
-/* Ajuste para a coluna de ações */
-.coluna-acoes {
-    width: 1%; /* Força a coluna a ter a menor largura possível */
-    white-space: nowrap; /* Impede que o conteúdo (botões) quebre para a linha de baixo */
-}
-
-/* --- ESTILOS DOS BOTÕES --- */
-/* Estilo base para todos os botões, garantindo consistência */
 button {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 6px; /* Cantos arredondados */
-    cursor: pointer;
-    color: white;
-    font-family: 'Poppins', sans-serif; /* Mesma fonte do resto da página */
-    font-weight: 500;
-    transition: all 0.2s ease-in-out; /* Animação suave para todas as propriedades */
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 100vw;
+  cursor: pointer;
+  font-weight: normal;
+  transition: filter 0.5s ease;
+  color: var(--table-txt);
 }
 
-/* Efeito de hover para os botões */
-button:hover {
-    transform: translateY(-2px); /* Efeito de "levantar" o botão */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais forte para destacar */
-}
-
-/* Botão de Adicionar */
 .btn-adicionar {
-    background-color: #27ae60; /* Verde moderno */
-    display: block;
-    width: fit-content; /* Largura se ajusta ao texto */
-    margin-bottom: 20px;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  aspect-ratio: 1;
+  background-color: #27ae60;
+  display: block;
+  width: fit-content;
+  font-size: 2rem;
+  font-weight: bolder;
+  border: 0;
 }
 
-.btn-adicionar:hover {
-    background-color: #2ecc71;
+td > button {
+  background: #fff3;
 }
 
-/* Botão de Editar */
-.btn-editar {
-    background-color: #2980b9; /* Azul elegante */
-    margin-right: 5px; /* Espaço entre os botões de ação */
-}
-
-.btn-editar:hover {
-    background-color: #3498db;
-}
-
-/* Botão de Excluir */
-.btn-excluir {
-    background-color: #c0392b; /* Vermelho sóbrio */
-}
-
-.btn-excluir:hover {
-    background-color: #e74c3c;
+.btn-adicionar:hover, td > button:hover {
+  filter:drop-shadow(0 0 .25rem var(--secondary-color));
 }

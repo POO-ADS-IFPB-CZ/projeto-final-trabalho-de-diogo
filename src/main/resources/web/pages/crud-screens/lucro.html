@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Lucros</title>
-    <link rel="stylesheet" href="/src/main/resources/web/pages/crud-screens/crud.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Gestão de Lucros</h1>
-        <button class="btn-adicionar">Adicionar Novo</button>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Recorrente</th>
-                    <th>Data</th>
-                    <th>Valor (R$)</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Salário</td>
-                    <td>Sim</td>
-                    <td>05/08/2025</td>
-                    <td>R$ 5.000,00</td>
-                    <td class="coluna-acoes">
-                        <button class="btn-editar">Editar</button>
-                        <button class="btn-excluir">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Projeto Freelance</td>
-                    <td>Não</td>
-                    <td>01/08/2025</td>
-                    <td>R$ 800,00</td>
-                    <td class="coluna-acoes">
-                        <button class="btn-editar">Editar</button>
-                        <button class="btn-excluir">Excluir</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">Total:</td>
-                    <td>R$ 5.800,00</td>
-                </tr>
-            </tfoot>
-        </table>
+    <link rel="stylesheet" href="./crud.css">
+    <script defer src="./lucro.js"></script>
+  </head>
+  <body>
+    <h1 class="pageTitle">Gestão de Lucros</h1>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th class="expand">Descrição</th>
+            <th>Recorrente</th>
+            <th>Data</th>
+            <th>Valor (R$)</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Salário</td>
+            <td>Sim</td>
+            <td>05/08/2025</td>
+            <td>R$ 5.000,00</td>
+            <td>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Projeto Freelance</td>
+            <td>Não</td>
+            <td>01/08/2025</td>
+            <td>R$ 800,00</td>
+            <td>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total">
+        <p class="totalTxt">Total</p>
+        <p id="totalValue">R$0,00</p>
+      </div>
     </div>
-</body>
+    <button id="new" class="btn-adicionar">+</button>
+  </body>
 </html>

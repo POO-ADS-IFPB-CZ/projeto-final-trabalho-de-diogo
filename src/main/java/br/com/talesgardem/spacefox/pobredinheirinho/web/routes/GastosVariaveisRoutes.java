@@ -1,4 +1,4 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.web.routes;
 
-public class GastosVariaveisRoutes {
+public class GastosVariaveisRoutes extends BaseRoutes {
 }
