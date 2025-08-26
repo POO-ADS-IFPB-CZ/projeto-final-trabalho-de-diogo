@@ -1,5 +1,7 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.web;
 
+import br.com.talesgardem.spacefox.pobredinheirinho.web.routes.DynamicRouter;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,10 +14,12 @@ public class HttpServer {
     private final Router router;
     private ServerSocket serverSocket;
     private volatile boolean running = false;
+    private DynamicRouter dynamicRouter;
 
     public HttpServer(int port) {
         this.port = port;
         this.router = new Router();
+        this.dynamicRouter = new DynamicRouter();
     }
 
     public void start() {
@@ -60,6 +64,7 @@ public class HttpServer {
             String method = parts[0];
             String path = parts[1];
 
+            if (dynamicRouter.handleRequest(String.valueOf(clientInputLine), method, path, out)) return;
             router.handleIncomingRequest(out, method, path);
         } catch (IOException e) {
             System.out.println("Error closing socket:");
