@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Gastos Fixos</title>
+    <link rel="stylesheet" href="/src/main/resources/web/pages/crud-screens/crud.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestão de Gastos Fixos</h1>
+        <button class="btn-adicionar">Adicionar Novo</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Valor (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aluguel</td>
+                    <td>10/08/2025</td>
+                    <td>R$ 1.200,00</td>
+                    <td class="coluna-acoes">
+                        <button class="btn-editar">Editar</button>
+                        <button class="btn-excluir">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Energia</td>
+                    <td>11/08/2025</td>
+                    <td>R$ 800,00</td>
+                    <td class="coluna-acoes">
+                        <button class="btn-editar">Editar</button>
+                        <button class="btn-excluir">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td>R$ 2.000,00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
