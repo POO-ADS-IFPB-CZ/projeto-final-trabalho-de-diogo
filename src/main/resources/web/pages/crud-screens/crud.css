@@ -1,0 +1,134 @@
+/* Define a aparência base da página */
+body {
+    font-family: 'Poppins', sans-serif; /* Usa a nova fonte importada */
+    background-color: #f0f2f5; /* Um tom de cinza mais suave para o fundo */
+    color: #333; /* Cor padrão do texto */
+    margin: 0;
+    padding: 20px; /* Adiciona um respiro nas bordas da página */
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+/* O card que envolve todo o conteúdo */
+.container {
+    width: 90%;
+    max-width: 900px; /* Limita a largura em telas muito grandes para melhor legibilidade */
+    margin: 40px auto; /* Centraliza o container na página */
+    background-color: #ffffff; /* Fundo branco para o conteúdo */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 12px; /* Cantos arredondados para um visual suave */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra sutil para dar profundidade */
+}
+
+/* Estilo do título principal */
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Cor escura e sóbria para o título */
+    margin-bottom: 30px;
+}
+
+/* --- ESTILOS DA TABELA --- */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+    margin-top: 20px;
+    border-radius: 8px; /* Cantos arredondados para a tabela */
+    overflow: hidden; /* Garante que o conteúdo não "vaze" dos cantos arredondados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra mais leve para a tabela */
+}
+
+/* Cabeçalho da tabela */
+thead {
+    background-color: #34495e; /* Um azul-escuro sofisticado */
+    color: white;
+}
+
+/* Células do cabeçalho e do corpo da tabela */
+td, th {
+    padding: 15px;
+    text-align: left;
+    border: none; /* Remove todas as bordas tradicionais */
+    border-bottom: 1px solid #e9ecef; /* Linha sutil para separar as linhas */
+}
+
+/* Corpo da tabela */
+tbody tr {
+    transition: background-color 0.2s ease-in-out; /* Efeito suave ao passar o mouse */
+}
+
+/* Contraste aumentado para as linhas pares */
+tbody tr:nth-child(even) {
+    background-color: #EAEAEA; /* Cor de fundo mais escura para melhor contraste */
+}
+
+/* Remove a borda da última linha para um acabamento limpo */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efeito de hover nas linhas da tabela */
+tbody tr:hover {
+    background-color: #dcdcdc; /* Cor de hover também escurecida para manter a consistência */
+}
+
+/* Rodapé da tabela */
+tfoot tr {
+    font-weight: bold;
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+/* Ajuste para a coluna de ações */
+.coluna-acoes {
+    width: 1%; /* Força a coluna a ter a menor largura possível */
+    white-space: nowrap; /* Impede que o conteúdo (botões) quebre para a linha de baixo */
+}
+
+/* --- ESTILOS DOS BOTÕES --- */
+/* Estilo base para todos os botões, garantindo consistência */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px; /* Cantos arredondados */
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif; /* Mesma fonte do resto da página */
+    font-weight: 500;
+    transition: all 0.2s ease-in-out; /* Animação suave para todas as propriedades */
+}
+
+/* Efeito de hover para os botões */
+button:hover {
+    transform: translateY(-2px); /* Efeito de "levantar" o botão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais forte para destacar */
+}
+
+/* Botão de Adicionar */
+.btn-adicionar {
+    background-color: #27ae60; /* Verde moderno */
+    display: block;
+    width: fit-content; /* Largura se ajusta ao texto */
+    margin-bottom: 20px;
+}
+
+.btn-adicionar:hover {
+    background-color: #2ecc71;
+}
+
+/* Botão de Editar */
+.btn-editar {
+    background-color: #2980b9; /* Azul elegante */
+    margin-right: 5px; /* Espaço entre os botões de ação */
+}
+
+.btn-editar:hover {
+    background-color: #3498db;
+}
+
+/* Botão de Excluir */
+.btn-excluir {
+    background-color: #c0392b; /* Vermelho sóbrio */
+}
+
+.btn-excluir:hover {
+    background-color: #e74c3c;
+}
