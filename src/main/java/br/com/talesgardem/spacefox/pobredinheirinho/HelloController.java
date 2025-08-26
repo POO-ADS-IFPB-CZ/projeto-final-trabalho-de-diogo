@@ -27,6 +27,9 @@ public class HelloController {
     public void initialize() {
         webEngine = webview.getEngine();
         webEngine.load("http://localhost:8080");
+        webEngine.setJavaScriptEnabled(true);
+        webEngine.setOnAlert(event -> System.out.println(event.getData()));
+        webEngine.setOnError(event -> System.err.println(event.getMessage()));
     }
 
     @FXML
@@ -41,7 +44,7 @@ public class HelloController {
 
     @FXML
     protected void onGastosFixos() {
-        webEngine.load("http://localhost:8080/gastosFixos");
+        webEngine.load("http://localhost:8080/gastosfixos");
     }
 
     @FXML

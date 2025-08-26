@@ -15,7 +15,6 @@ public class DynamicRouter {
     }
 
     public boolean handleRequest(String req, String method, String path, BufferedWriter res) {
-        System.out.println("Request: " + path);
         AtomicBoolean found = new AtomicBoolean(false);
         routes.forEach((s, v) -> {
             String[] splitted = path.split("/");

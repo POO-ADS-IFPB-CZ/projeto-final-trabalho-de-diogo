@@ -2,7 +2,11 @@ package br.com.talesgardem.spacefox.pobredinheirinho.web;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Router {
@@ -34,7 +38,7 @@ public class Router {
             while (true) {
                 String line = br.readLine();
                 if (line == null) break;
-                routesData.append(line);
+                routesData.append(line).append("\n");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -47,12 +51,17 @@ public class Router {
 
         int length = body.length();
 
-        LocalDateTime now = LocalDateTime.now();
+        if (Objects.equals(mimeType, "js")) mimeType = "javascript";
+
+        ZonedDateTime now = ZonedDateTime.now(ZoneOffset.UTC);
+        DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
+        byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
         res.write("HTTP/1.0 " + status + " OK\r\n");
-        res.write("Date: " + now + "\r\n");
+        res.write("Date: " + now.format(formatter) + "\r\n");
         res.write("Server: PobreDinheirinhoApp\r\n");
         res.write("Content-Type: text/" + mimeType + "\r\n");
-        res.write("Content-Length: " + length + "\r\n");
+        res.write("Content-Length: " + bytes.length + "\r\n");
+        res.write("Access-Control-Allow-Origin: *\r\n");
         res.write("\r\n");
         res.write(body);
     }
@@ -63,6 +72,7 @@ public class Router {
         if (parsedPath.endsWith("/")) parsedPath = parsedPath.substring(0, parsedPath.length() - 1);
         if (!parsedPath.contains(".")) parsedPath = parsedPath + ".html";
         String finalParsedPath = parsedPath;
+        System.out.println(finalParsedPath + " <----");
         List<String[]> foundedPath = routes.stream().filter(s -> s[0].equalsIgnoreCase(method)).filter(s -> {
             String sPath = s[1];
             if (!sPath.contains("."))  sPath = sPath + ".html";
@@ -75,6 +85,7 @@ public class Router {
         }
 
         String file = foundedPath.getFirst()[2];
+        System.out.println("file: " + file);
         String MimeType = Arrays.stream(file.split("\\.")).toList().getLast();
         sendResponse(res, 200, readFile(file), MimeType);
     }

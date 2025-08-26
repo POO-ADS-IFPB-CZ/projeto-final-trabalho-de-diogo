@@ -1,6 +1,9 @@
 ""|GET|"pages/homepage/index.html";
 "index.css"|GET|"pages/homepage/index.css";
 "lucros"|GET|"pages/crud-screens/lucro.html";
-"gastosFixos"|GET|"pages/crud-screens/gastofixo.html";
-"gastosVariaveis"|GET|"pages/crud-screens/gastovariavel.html";
+"gastosfixos"|GET|"pages/crud-screens/gastofixo.html";
+"gastosVariaveis"|GET|"pages/crud-screens/gastoVariavel.html";
 "crud.css"|GET|"pages/crud-screens/crud.css";
+"gastofixo.js"|GET|"pages/crud-screens/gastofixo.js";
+"gastoVariavel.js"|GET|"pages/crud-screens/gastoVariavel.js";
+"lucro.js"|GET|"pages/crud-screens/lucro.js";

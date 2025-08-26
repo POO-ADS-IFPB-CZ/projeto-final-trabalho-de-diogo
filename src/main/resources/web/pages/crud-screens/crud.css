@@ -143,3 +143,76 @@ td > button {
 .btn-adicionar:hover, td > button:hover {
   filter:drop-shadow(0 0 .25rem var(--secondary-color));
 }
+
+.gasto-modal {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  isolation: isolate;
+  display: flex;
+}
+
+.modal-backdrop {
+  background: #0003;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.modal-card {
+  margin: auto;
+  width: 80%;
+  height: fit-content;
+  background: var(--secondary-color);
+  color: var(--secondary-text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-card  h2 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bolder;
+  letter-spacing: -0.15rem;
+}
+
+.gasto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gasto-form label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.gasto-form input {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  background: #0007;
+  width: 100%;
+  padding-block: 0.5rem;
+}
+
+.modal-actions button:hover {
+  filter:drop-shadow(0 0 .25rem black);
+}
