@@ -44,9 +44,10 @@ body {
 .content {
   width: 100%;
   height: fit-content;
+  max-height: 80svh;
   border-radius: 0.5rem;
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: fit-content 5rem;
@@ -198,7 +199,7 @@ td > button {
 .gasto-form input {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border: 0;
+  border: 2px solid transparent;
 }
 
 .modal-actions {
@@ -215,4 +216,9 @@ td > button {
 
 .modal-actions button:hover {
   filter:drop-shadow(0 0 .25rem black);
+}
+
+.modal-actions button:disabled {
+  filter: grayscale(1) brightness(0.5);
+  cursor: not-allowed;
 }

@@ -1,5 +1,6 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.web.routes;
 
+import br.com.talesgardem.spacefox.pobredinheirinho.io.StorageManager;
 import br.com.talesgardem.spacefox.pobredinheirinho.schemas.GastoFixo;
 import br.com.talesgardem.spacefox.pobredinheirinho.util.Utils;
 import com.google.gson.Gson;
@@ -10,36 +11,41 @@ import java.io.IOException;
 import java.util.Date;
 
 public class GastosFixosRoutes extends BaseRoutes {
+    private StorageManager<GastoFixo> storage;
+
     public GastosFixosRoutes() {
+        this.storage = new StorageManager<>("gastoFixo.json", GastoFixo.class);
+
         this.getRoutes.put("read", this::readData);
+        this.postRoutes.put("create", this::addData);
+        this.putRoutes.put("update-*", this::editData);
+        this.deleteRoutes.put("delete-*", this::deleteData);
     }
 
-    public void readData(String req, BufferedWriter res) throws IOException {
-        GastoFixo gasto1 = new GastoFixo();
-        gasto1.setId(Utils.getRandomId());
-        gasto1.setDescription("Compra 1");
-        gasto1.setData(new Date());
-        gasto1.setValor(129.32f);
-
-        GastoFixo[] gastosFixos = new GastoFixo[1];
-        gastosFixos[0] = gasto1;
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-                .create();
-        String json = gson.toJson(gastosFixos);
+    public void readData(String Path, String req, BufferedWriter res) throws IOException {
+        String json = gson.toJson(storage.readAll());
         this.writeResponse(res, json);
     }
 
-    public void addData(String req, BufferedWriter res) throws IOException {
-
+    public void addData(String Path, String req, BufferedWriter res) throws IOException {
+        GastoFixo data = gson.fromJson(req, GastoFixo.class);
+        data.setId(Utils.getRandomId());
+        storage.add(data);
+        this.writeResponse(res, req);
     }
 
-    public void editData(String req, BufferedWriter res) throws IOException {
-
+    public void editData(String Path, String req, BufferedWriter res) throws IOException {
+        gson.fromJson(req, GastoFixo.class);
+        GastoFixo data = gson.fromJson(req, GastoFixo.class);
+        System.out.println(getIdFromPath(Path));
+        data.setId(getIdFromPath(Path));
+        boolean result = storage.update(data);
+        System.out.println(result);
+        this.writeResponse(res, req);
     }
 
-    public void deleteData(String req, BufferedWriter res) throws IOException {
-
+    public void deleteData(String Path, String req, BufferedWriter res) throws IOException {
+        storage.delete(getIdFromPath(Path));
+        this.writeResponse(res, "{\"ok\": true}");
     }
 }

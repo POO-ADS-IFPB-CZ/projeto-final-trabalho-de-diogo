@@ -72,7 +72,6 @@ public class Router {
         if (parsedPath.endsWith("/")) parsedPath = parsedPath.substring(0, parsedPath.length() - 1);
         if (!parsedPath.contains(".")) parsedPath = parsedPath + ".html";
         String finalParsedPath = parsedPath;
-        System.out.println(finalParsedPath + " <----");
         List<String[]> foundedPath = routes.stream().filter(s -> s[0].equalsIgnoreCase(method)).filter(s -> {
             String sPath = s[1];
             if (!sPath.contains("."))  sPath = sPath + ".html";
@@ -85,7 +84,6 @@ public class Router {
         }
 
         String file = foundedPath.getFirst()[2];
-        System.out.println("file: " + file);
         String MimeType = Arrays.stream(file.split("\\.")).toList().getLast();
         sendResponse(res, 200, readFile(file), MimeType);
     }

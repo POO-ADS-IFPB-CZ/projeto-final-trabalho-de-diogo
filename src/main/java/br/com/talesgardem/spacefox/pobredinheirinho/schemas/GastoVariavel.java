@@ -1,14 +1,13 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.schemas;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
-public class GastoFixo extends Schema {
+public class GastoVariavel extends Schema {
     private String descricao;
     private Date data;
     private float valor;
 
-    public GastoFixo() {}
+    public GastoVariavel() {}
 
     public String getDescricao() {
         return descricao;
