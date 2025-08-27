@@ -1,5 +1,7 @@
 package br.com.talesgardem.spacefox.pobredinheirinho.web;
 
+import br.com.talesgardem.spacefox.pobredinheirinho.web.routes.DynamicRouter;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,10 +14,12 @@ public class HttpServer {
     private final Router router;
     private ServerSocket serverSocket;
     private volatile boolean running = false;
+    private DynamicRouter dynamicRouter;
 
     public HttpServer(int port) {
         this.port = port;
         this.router = new Router();
+        this.dynamicRouter = new DynamicRouter();
     }
 
     public void start() {
@@ -48,18 +52,36 @@ public class HttpServer {
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))
         ) {
-            StringBuilder clientInputLine = new StringBuilder();
-            while (true) {
-                String content = in.readLine();
-                if (content == null || content.isEmpty()) break; // end of message
-                clientInputLine.append(content);
-            }
-            if (clientInputLine.isEmpty()) return;
-            String[] parts = clientInputLine.toString().split(" ");
-            if (parts.length < 2) return; // invalid message
-            String method = parts[0];
-            String path = parts[1];
+            // 1. Lendo a primeira linha: METHOD PATH HTTP/1.1
+            String requestLine = in.readLine();
+            if (requestLine == null || requestLine.isEmpty()) return;
 
+            String[] requestParts = requestLine.split(" ");
+            if (requestParts.length < 2) return; // requisição inválida
+
+            String method = requestParts[0];
+            String path = requestParts[1];
+
+            // 2. Lendo headers e extraindo Content-Length
+            String line;
+            int contentLength = 0;
+            while (!(line = in.readLine()).isEmpty()) {
+                if (line.startsWith("Content-Length:")) {
+                    contentLength = Integer.parseInt(line.split(" ")[1]);
+                }
+            }
+
+            // 3. Lendo o body exato
+            char[] bodyChars = new char[contentLength];
+            int read = 0;
+            while (read < contentLength) {
+                int r = in.read(bodyChars, read, contentLength - read);
+                if (r == -1) break;
+                read += r;
+            }
+            String body = new String(bodyChars);
+
+            if (dynamicRouter.handleRequest(body, method, path, out)) return;
             router.handleIncomingRequest(out, method, path);
         } catch (IOException e) {
             System.out.println("Error closing socket:");

@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="br.com.talesgardem.spacefox.pobredinheirinho.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" minHeight="400.0" minWidth="600.0" spacing="20.0" style="-fx-padding: 0; -fx-border-width: 0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.talesgardem.spacefox.pobredinheirinho.HelloController">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+      <VBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minWidth="200.0" spacing="16.0" style="-fx-background-color: #47182c;" HBox.hgrow="NEVER">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <VBox>
+            <VBox.margin>
+               <Insets bottom="24.0" />
+            </VBox.margin>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Pobre" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Dinheirinho" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </VBox>
+         <Button id="HomeButton" fx:id="HomeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHome" text="Home" />
+         <Button id="LucrosButton" fx:id="LucrosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLucros" text="Lucros" />
+         <Button id="GastosFixosButton" fx:id="GastosFixosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onGastosFixos" text="Gastos Fixos" />
+         <Button id="GastosVariaveisButton" fx:id="GastosVariaveisButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onGastosVariaveis" text="Gastos Variaveis" />
+      </VBox>
+      <WebView fx:id="webview" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #47182c;" HBox.hgrow="ALWAYS" />
+   </HBox>
 </VBox>
