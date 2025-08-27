@@ -8,6 +8,8 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 public class GastosFixosRoutes extends BaseRoutes {
@@ -30,6 +32,15 @@ public class GastosFixosRoutes extends BaseRoutes {
     public void addData(String Path, String req, BufferedWriter res) throws IOException {
         GastoFixo data = gson.fromJson(req, GastoFixo.class);
         data.setId(Utils.getRandomId());
+
+        // Adiciona 12 horas à data existente
+        if (data.getData() != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(data.getData());
+            cal.add(Calendar.HOUR_OF_DAY, 12);
+            data.setData(cal.getTime());
+        }
+
         storage.add(data);
         this.writeResponse(res, req);
     }
@@ -39,6 +50,15 @@ public class GastosFixosRoutes extends BaseRoutes {
         GastoFixo data = gson.fromJson(req, GastoFixo.class);
         System.out.println(getIdFromPath(Path));
         data.setId(getIdFromPath(Path));
+
+        // Adiciona 12 horas à data existente
+        if (data.getData() != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(data.getData());
+            cal.add(Calendar.HOUR_OF_DAY, 12);
+            data.setData(cal.getTime());
+        }
+
         boolean result = storage.update(data);
         System.out.println(result);
         this.writeResponse(res, req);

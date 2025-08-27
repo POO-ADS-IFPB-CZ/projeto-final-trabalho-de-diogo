@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Gastos Variáveis</title>
+    <link rel="stylesheet" href="./crud.css">
+  </head>
+  <body>
+    <h1 class="pageTitle">Gestão de Gastos Variáveis</h1>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th class="expand">Descrição</th>
+            <th>Data</th>
+            <th>Valor (R$)</th>
+            <th>Parcelas</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supermercado</td>
+            <td>15/08/2025</td>
+            <td>R$ 800,00</td>
+            <td>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Supermercado</td>
+            <td>16/08/2025</td>
+            <td>R$ 500,00</td>
+            <td>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total">
+        <p class="totalTxt">Total</p>
+        <p id="totalValue">R$0,00</p>
+      </div>
+    </div>
+    <button id="new" class="btn-adicionar">+</button>
+  </body>
+  <script type="text/javascript" src="./gastoVariavel.js"></script>
+</html>

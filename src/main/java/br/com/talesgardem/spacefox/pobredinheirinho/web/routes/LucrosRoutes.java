@@ -6,6 +6,7 @@ import br.com.talesgardem.spacefox.pobredinheirinho.util.Utils;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class LucrosRoutes extends BaseRoutes {
     private StorageManager<Lucro> storage;
@@ -27,6 +28,15 @@ public class LucrosRoutes extends BaseRoutes {
     public void addData(String Path, String req, BufferedWriter res) throws IOException {
         Lucro data = gson.fromJson(req, Lucro.class);
         data.setId(Utils.getRandomId());
+
+        // Adiciona 12 horas à data existente
+        if (data.getData() != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(data.getData());
+            cal.add(Calendar.HOUR_OF_DAY, 12);
+            data.setData(cal.getTime());
+        }
+
         storage.add(data);
         this.writeResponse(res, req);
     }
@@ -36,6 +46,15 @@ public class LucrosRoutes extends BaseRoutes {
         Lucro data = gson.fromJson(req, Lucro.class);
         System.out.println(getIdFromPath(Path));
         data.setId(getIdFromPath(Path));
+
+        // Adiciona 12 horas à data existente
+        if (data.getData() != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(data.getData());
+            cal.add(Calendar.HOUR_OF_DAY, 12);
+            data.setData(cal.getTime());
+        }
+
         boolean result = storage.update(data);
         System.out.println(result);
         this.writeResponse(res, req);

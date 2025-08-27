@@ -8,67 +8,40 @@
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-wallet"></i>
-                <h1>Pobre Dinheirinho</h1>
-            </div>
-            <div class="header-actions">
-                <button class="btn-secondary" onclick="location.href='../crud-screens/lucro.html'">
-                    <i class="fas fa-plus"></i> Lucros
-                </button>
-                <button class="btn-secondary" onclick="location.href='../crud-screens/gastofixo.html'">
-                    <i class="fas fa-minus"></i> Gastos Fixos
-                </button>
-                <button class="btn-secondary" onclick="location.href='../crud-screens/gastovariavel.html'">
-                    <i class="fas fa-shopping-cart"></i> Gastos Variáveis
-                </button>
-            </div>
-        </header>
-
         <section class="financial-summary">
-            <div class="summary-card balance">
-                <div class="card-icon">
-                    <i class="fas fa-coins"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Saldo Atual</h3>
-                    <div class="amount positive">R$ 2.500,00</div>
-                    <p class="trend positive">
-                        <i class="fas fa-arrow-up"></i>
-                        +15% este mês
-                    </p>
-                </div>
-            </div>
+  <div class="summary-card balance" id="saldo-card">
+    <div class="card-icon">
+      <i class="fas fa-coins"></i>
+    </div>
+    <div class="card-content">
+      <h3>Saldo Atual</h3>
+      <div class="amount card-value">R$ 0,00</div>
+      <p class="trend card-trend">-</p>
+    </div>
+  </div>
 
-            <div class="summary-card income">
-                <div class="card-icon">
-                    <i class="fas fa-arrow-up"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Receitas</h3>
-                    <div class="amount">R$ 5.800,00</div>
-                    <p class="trend positive">
-                        <i class="fas fa-arrow-up"></i>
-                        +8% este mês
-                    </p>
-                </div>
-            </div>
+  <div class="summary-card income" id="lucros-card">
+    <div class="card-icon">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <div class="card-content">
+      <h3>Lucros</h3>
+      <div class="amount card-value">R$ 0,00</div>
+      <p class="trend card-trend">-</p>
+    </div>
+  </div>
 
-            <div class="summary-card expenses">
-                <div class="card-icon">
-                    <i class="fas fa-arrow-down"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Despesas</h3>
-                    <div class="amount">R$ 3.300,00</div>
-                    <p class="trend negative">
-                        <i class="fas fa-arrow-down"></i>
-                        -5% este mês
-                    </p>
-                </div>
-            </div>
-        </section>
+  <div class="summary-card expenses" id="gastos-card">
+    <div class="card-icon">
+      <i class="fas fa-arrow-down"></i>
+    </div>
+    <div class="card-content">
+      <h3>Gastos</h3>
+      <div class="amount card-value">R$ 0,00</div>
+      <p class="trend card-trend">-</p>
+    </div>
+  </div>
+      </section>
         <section class="projections">
             <h2><i class="fas fa-chart-line"></i> Projeções dos Próximos Meses</h2>
             
@@ -144,4 +117,5 @@
 
     </div>
 </body>
+<script src="./homepage.js"></script>
 </html>

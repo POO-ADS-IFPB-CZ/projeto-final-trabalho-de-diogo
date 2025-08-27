@@ -7,3 +7,4 @@
 "gastofixo.js"|GET|"pages/crud-screens/gastofixo.js";
 "gastoVariavel.js"|GET|"pages/crud-screens/gastoVariavel.js";
 "lucro.js"|GET|"pages/crud-screens/lucro.js";
+"homepage.js"|GET|"pages/homepage/homepage.js";

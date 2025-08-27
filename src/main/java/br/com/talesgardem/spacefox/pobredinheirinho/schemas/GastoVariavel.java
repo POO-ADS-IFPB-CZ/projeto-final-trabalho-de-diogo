@@ -6,6 +6,7 @@ public class GastoVariavel extends Schema {
     private String descricao;
     private Date data;
     private float valor;
+    private int parcelas;
 
     public GastoVariavel() {}
 
@@ -31,5 +32,13 @@ public class GastoVariavel extends Schema {
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public int getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(int parcelas) {
+        this.parcelas = parcelas;
     }
 }
