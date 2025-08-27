@@ -2,6 +2,7 @@ package br.com.talesgardem.spacefox.pobredinheirinho;
 
 import br.com.talesgardem.spacefox.pobredinheirinho.web.HttpServer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,10 +24,26 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         StartSocket();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 500);
+        stage.setTitle("Pobre Dinheirinho");
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(t -> {
+            t.consume();
+
+            if (server != null) {
+                try {
+                    server.stop();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            stage.close();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public static void main(String[] args) { launch(); }
